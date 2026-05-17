@@ -6,6 +6,45 @@
 
 ---
 
+## 📑 Mục lục
+
+### Phần 1 — Kiến thức & Khái niệm
+- [A. Chuẩn mã hóa Wi-Fi](#-a-chuẩn-mã-hóa-wi-fi-wireless-encryption-standards)
+- [B. 4-Way Handshake (WPA/WPA2)](#-b-4-way-handshake-wpawpa2)
+- [C. Các loại tấn công Wireless](#-c-các-loại-tấn-công-wireless)
+- [D. Bộ công cụ Aircrack-ng](#️-d-bộ-công-cụ-aircrack-ng)
+- [E. Wifite](#-e-wifite)
+- [Tổng hợp: 2 Tool & Utility con](#-tổng-hợp-2-tool--các-utility-con-sử-dụng-trong-đề-tài)
+- [F. Môi trường & Hạ tầng](#️-f-môi-trường--hạ-tầng)
+- [G. Phòng thủ & Khuyến nghị](#️-g-phòng-thủ--khuyến-nghị)
+
+### Phần 2 — Tại sao dùng "A" mà không dùng "B, C, D"?
+- [Kali Linux vs Ubuntu/Windows/Parrot OS](#-tại-sao-dùng-kali-linux-mà-không-dùng-ubuntuwindowsparrot-os)
+- [Aircrack-ng vs Hashcat/Kismet/Fern](#-tại-sao-dùng-aircrack-ng-mà-không-dùng-hashcatkismetfern-wifi-cracker)
+- [Wifite vs Fluxion/WiFiPhisher/Bettercap](#-tại-sao-dùng-wifite-mà-không-dùng-fluxionwifiphisherbettercap)
+- [WPA2-PSK vs WEP/WPA3](#-tại-sao-dùng-wpa2-psk-làm-mục-tiêu-test-mà-không-dùng-wepwpa3)
+- [Dictionary Attack vs Brute-force/Rainbow Table](#-tại-sao-dùng-dictionary-attack-wordlist-mà-không-dùng-pure-brute-force-hoặc-rainbow-table)
+
+### Phần 3 — Sơ đồ & Checklist
+- [3. Sơ đồ Tổng quan Quy trình Tấn công](#3-sơ-đồ-tổng-quan-quy-trình-tấn-công)
+- [4. Checklist Kiến thức Bảo vệ Báo cáo](#4-checklist-kiến-thức-để-chuẩn-bị-bảo-vệ-báo-cáo)
+
+### Phần 5 — Luồng thực hiện & Lệnh
+- [A. Aircrack-ng — Quy trình thủ công (5 bước)](#-a-aircrack-ng--quy-trình-thủ-công-5-bước)
+- [B. Wifite — Quy trình tự động (1 lệnh)](#-b-wifite--quy-trình-tự-động-1-lệnh)
+- [C. So sánh nhanh: Khi nào dùng tool nào?](#-c-so-sánh-nhanh-khi-nào-dùng-tool-nào)
+
+### Phần 6 — Bảng Từ vựng Chuyên ngành
+- [🔐 Mã hóa & Giao thức](#-mã-hóa--giao-thức)
+- [🤝 Xác thực & Handshake](#-xác-thực--handshake)
+- [📡 Mạng & Wireless](#-mạng--wireless)
+- [⚔️ Tấn công & Khai thác](#️-tấn-công--khai-thác)
+- [🛠️ Công cụ & Kỹ thuật](#️-công-cụ--kỹ-thuật)
+- [🛡️ Phòng thủ & Bảo mật](#️-phòng-thủ--bảo-mật)
+- [📄 Thuật ngữ học thuật](#-thuật-ngữ-học-thuật)
+
+---
+
 ## 1. Danh sách Kiến thức & Khái niệm Cần Nắm
 
 ### 🔐 A. Chuẩn mã hóa Wi-Fi (Wireless Encryption Standards)
