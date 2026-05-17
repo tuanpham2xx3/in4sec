@@ -506,118 +506,120 @@ sudo wifite --dict mkwifi.txt
 
 ## 6. Bảng Từ vựng Chuyên ngành (Glossary)
 
+> 💡 Click vào từ viết tắt in đậm trong cột 3 & 4 để nhảy đến dòng định nghĩa tương ứng.
+
 ### 🔐 Mã hóa & Giao thức
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| Encryption | /ɪnˈkrɪpʃən/ | Mã hóa — biến dữ liệu thành dạng không đọc được nếu không có key | **Key** = khóa mã hóa, chuỗi bí mật dùng để mã hóa/giải mã |
-| Decryption | /diːˈkrɪpʃən/ | Giải mã — quá trình ngược lại của mã hóa | — |
-| WEP | /wɛp/ | **Wired Equivalent Privacy** — giao thức mã hóa Wi-Fi đầu tiên (1997), rất yếu | — |
-| WPA | /ˌdʌbəljuː piː ˈeɪ/ | **Wi-Fi Protected Access** — chuẩn mã hóa thay WEP, dùng TKIP | **TKIP** = Temporal Key Integrity Protocol — thay đổi key mỗi packet |
-| WPA2 | /ˌdʌbəljuː piː eɪ ˈtuː/ | Chuẩn mã hóa phổ biến nhất hiện tại, dùng AES + CCMP | **AES** = Advanced Encryption Standard (mã hóa khối 128/256-bit); **CCMP** = Counter Mode CBC-MAC Protocol (giao thức dùng AES) |
-| WPA3 | /ˌdʌbəljuː piː eɪ ˈθriː/ | Chuẩn mã hóa mới nhất (2018), dùng SAE, chống offline attack | **SAE** = Simultaneous Authentication of Equals (xác thực chống brute-force offline); **Offline attack** = tấn công không cần kết nối mạng |
-| PSK | /ˌpiː ɛs ˈkeɪ/ | **Pre-Shared Key** — password Wi-Fi mà mọi người cùng dùng | — |
-| AES | /ˌeɪ iː ˈɛs/ | **Advanced Encryption Standard** — thuật toán mã hóa khối 128/256-bit, chuẩn vàng | **Block cipher** = mã hóa theo khối (128-bit mỗi khối), khác **stream cipher** (mã hóa từng byte) |
-| RC4 | /ˌɑːr siː ˈfɔːr/ | Thuật toán mã hóa dòng, yếu, dùng trong WEP/WPA | **Stream cipher** = mã hóa từng byte liên tục; **IV** = Initialization Vector (24-bit trong WEP → dễ trùng lặp) |
-| TKIP | /ˈtiːkɪp/ | **Temporal Key Integrity Protocol** — thay đổi key mỗi packet, bản vá tạm cho RC4 | **Packet** = gói tin mạng, đơn vị dữ liệu nhỏ nhất truyền qua mạng |
-| CCMP | /ˌsiː siː ɛm ˈpiː/ | **Counter Mode CBC-MAC Protocol** — mã hóa dùng AES, mạnh hơn TKIP | **CBC-MAC** = Cipher Block Chaining Message Authentication Code (kiểm tra tính toàn vẹn dữ liệu) |
-| GCMP | /ˌdʒiː siː ɛm ˈpiː/ | **Galois/Counter Mode Protocol** — mã hóa trong WPA3, mạnh hơn CCMP | **GCM** = Galois/Counter Mode (kết hợp mã hóa + xác thực trong 1 bước) |
-| SAE | /ˌɛs eɪ ˈiː/ | **Simultaneous Authentication of Equals** — xác thực trong WPA3 | Chống **offline dictionary attack** = tấn công thử password từ file mà không cần kết nối AP |
-| Forward Secrecy | /ˈfɔːrwərd ˈsiːkrəsi/ | Dù lộ key hiện tại, dữ liệu quá khứ vẫn an toàn | **Session key** = key tạm cho mỗi phiên, khác nhau mỗi lần kết nối |
-| IV | /ˌaɪ ˈviː/ | **Initialization Vector** — giá trị khởi tạo dùng kèm key để mã hóa | IV 24-bit trong WEP = chỉ ~16.7 triệu khả năng → dễ **collision** (trùng lặp) |
+| <a id="t-encryption">Encryption</a> | /ɪnˈkrɪpʃən/ | Mã hóa — biến dữ liệu thành dạng không đọc được nếu không có key | **Key** = khóa mã hóa, chuỗi bí mật dùng để mã hóa/giải mã |
+| <a id="t-decryption">Decryption</a> | /diːˈkrɪpʃən/ | Giải mã — quá trình ngược lại của [Encryption](#t-encryption) | — |
+| <a id="t-wep">WEP</a> | /wɛp/ | **Wired Equivalent Privacy** — giao thức mã hóa Wi-Fi đầu tiên (1997), rất yếu | Dùng [RC4](#t-rc4) + [IV](#t-iv) 24-bit |
+| <a id="t-wpa">WPA</a> | /ˌdʌbəljuː piː ˈeɪ/ | **Wi-Fi Protected Access** — chuẩn mã hóa thay [WEP](#t-wep), dùng [TKIP](#t-tkip) | [TKIP](#t-tkip) = Temporal Key Integrity Protocol — thay đổi key mỗi packet |
+| <a id="t-wpa2">WPA2</a> | /ˌdʌbəljuː piː eɪ ˈtuː/ | Chuẩn mã hóa phổ biến nhất hiện tại, dùng [AES](#t-aes) + [CCMP](#t-ccmp) | [AES](#t-aes) = mã hóa khối 128/256-bit; [CCMP](#t-ccmp) = giao thức dùng AES |
+| <a id="t-wpa3">WPA3</a> | /ˌdʌbəljuː piː eɪ ˈθriː/ | Chuẩn mã hóa mới nhất (2018), dùng [SAE](#t-sae), chống offline attack | [SAE](#t-sae) = xác thực chống brute-force offline; [GCMP](#t-gcmp) = mã hóa mạnh hơn |
+| <a id="t-psk">PSK</a> | /ˌpiː ɛs ˈkeɪ/ | **Pre-Shared Key** — password Wi-Fi mà mọi người cùng dùng | Dùng cùng [SSID](#t-ssid) để tạo [PMK](#t-pmk) |
+| <a id="t-aes">AES</a> | /ˌeɪ iː ˈɛs/ | **Advanced Encryption Standard** — thuật toán mã hóa khối 128/256-bit, chuẩn vàng | **Block cipher** = mã hóa theo khối, khác **stream cipher** ([RC4](#t-rc4)) |
+| <a id="t-rc4">RC4</a> | /ˌɑːr siː ˈfɔːr/ | Thuật toán mã hóa dòng, yếu, dùng trong [WEP](#t-wep)/[WPA](#t-wpa) | **Stream cipher** = mã hóa từng byte; [IV](#t-iv) 24-bit → dễ trùng lặp |
+| <a id="t-tkip">TKIP</a> | /ˈtiːkɪp/ | **Temporal Key Integrity Protocol** — thay đổi key mỗi packet, bản vá tạm cho [RC4](#t-rc4) | **Packet** = gói tin mạng |
+| <a id="t-ccmp">CCMP</a> | /ˌsiː siː ɛm ˈpiː/ | **Counter Mode CBC-MAC Protocol** — mã hóa dùng [AES](#t-aes), mạnh hơn [TKIP](#t-tkip) | **CBC-MAC** = kiểm tra tính toàn vẹn dữ liệu |
+| <a id="t-gcmp">GCMP</a> | /ˌdʒiː siː ɛm ˈpiː/ | **Galois/Counter Mode Protocol** — mã hóa trong [WPA3](#t-wpa3), mạnh hơn [CCMP](#t-ccmp) | **GCM** = kết hợp mã hóa + xác thực trong 1 bước |
+| <a id="t-sae">SAE</a> | /ˌɛs eɪ ˈiː/ | **Simultaneous Authentication of Equals** — xác thực trong [WPA3](#t-wpa3) | Chống [Dictionary Attack](#t-dictionary-attack) offline; thay thế [PSK](#t-psk) handshake |
+| <a id="t-forward-secrecy">Forward Secrecy</a> | /ˈfɔːrwərd ˈsiːkrəsi/ | Dù lộ key hiện tại, dữ liệu quá khứ vẫn an toàn | **Session key** = key tạm mỗi phiên, khác nhau mỗi lần |
+| <a id="t-iv">IV</a> | /ˌaɪ ˈviː/ | **Initialization Vector** — giá trị khởi tạo dùng kèm key để mã hóa | 24-bit trong [WEP](#t-wep) = ~16.7 triệu khả năng → dễ **collision** (trùng lặp) |
 
 ### 🤝 Xác thực & Handshake
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| 4-Way Handshake | /fɔːr weɪ ˈhændʃeɪk/ | Quy trình 4 bước xác thực giữa client và AP trong WPA/WPA2 | **Client** = thiết bị kết nối; **AP** = Access Point (thiết bị phát Wi-Fi) |
-| Authentication | /ɔːˌθɛntɪˈkeɪʃən/ | Xác thực — chứng minh danh tính trước khi truy cập | — |
-| Handshake | /ˈhændʃeɪk/ | Trao đổi thông tin ban đầu giữa 2 bên để thiết lập kết nối | — |
-| PMK | /ˌpiː ɛm ˈkeɪ/ | **Pairwise Master Key** — key gốc tạo từ PSK + SSID, dùng để sinh PTK | **PSK** = Pre-Shared Key (password Wi-Fi); **SSID** = tên mạng; **PTK** = Pairwise Transient Key |
-| PTK | /ˌpiː tiː ˈkeɪ/ | **Pairwise Transient Key** — key phiên mã hóa traffic giữa 1 client và AP | **Traffic** = lưu lượng dữ liệu truyền qua mạng |
-| EAPOL | /ˈiːpɒl/ | **Extensible Authentication Protocol over LAN** — giao thức đóng gói frame xác thực | **Frame** = khung dữ liệu ở tầng 2 (Data Link Layer); **LAN** = Local Area Network |
-| MIC | /mɪk/ | **Message Integrity Code** — đảm bảo message không bị sửa đổi | **Integrity** = tính toàn vẹn — dữ liệu không bị thay đổi trên đường truyền |
-| KRACK | /kræk/ | **Key Reinstallation Attack** — lỗ hổng WPA2 (2017), khai thác reinstall key | **Reinstall** = cài lại key đã dùng → attacker có thể giải mã traffic |
-| OWE | /oʊ dʌbəljuː ˈiː/ | **Opportunistic Wireless Encryption** — mã hóa mạng mở không cần password | **Open network** = mạng Wi-Fi không có password (quán café, sân bay...) |
+| <a id="t-4way-handshake">4-Way Handshake</a> | /fɔːr weɪ ˈhændʃeɪk/ | Quy trình 4 bước xác thực giữa client và [AP](#t-ap) trong [WPA](#t-wpa)/[WPA2](#t-wpa2) | Tạo [PTK](#t-ptk) từ [PMK](#t-pmk) + nonces |
+| <a id="t-authentication">Authentication</a> | /ɔːˌθɛntɪˈkeɪʃən/ | Xác thực — chứng minh danh tính trước khi truy cập | — |
+| <a id="t-handshake">Handshake</a> | /ˈhændʃeɪk/ | Trao đổi thông tin ban đầu giữa 2 bên để thiết lập kết nối | Xem [4-Way Handshake](#t-4way-handshake) |
+| <a id="t-pmk">PMK</a> | /ˌpiː ɛm ˈkeɪ/ | **Pairwise Master Key** — key gốc tạo từ [PSK](#t-psk) + [SSID](#t-ssid), dùng để sinh [PTK](#t-ptk) | [PSK](#t-psk) = password Wi-Fi; [SSID](#t-ssid) = tên mạng |
+| <a id="t-ptk">PTK</a> | /ˌpiː tiː ˈkeɪ/ | **Pairwise Transient Key** — key phiên mã hóa traffic giữa 1 client và [AP](#t-ap) | **Traffic** = lưu lượng dữ liệu qua mạng |
+| <a id="t-eapol">EAPOL</a> | /ˈiːpɒl/ | **Extensible Authentication Protocol over LAN** — đóng gói frame xác thực | **Frame** = khung dữ liệu tầng 2; **LAN** = Local Area Network |
+| <a id="t-mic">MIC</a> | /mɪk/ | **Message Integrity Code** — đảm bảo message không bị sửa đổi | **Integrity** = tính toàn vẹn dữ liệu |
+| <a id="t-krack">KRACK</a> | /kræk/ | **Key Reinstallation Attack** — lỗ hổng [WPA2](#t-wpa2) (2017) | Khai thác reinstall key trong [4-Way Handshake](#t-4way-handshake) |
+| <a id="t-owe">OWE</a> | /oʊ dʌbəljuː ˈiː/ | **Opportunistic Wireless Encryption** — mã hóa mạng mở không cần password | Tính năng của [WPA3](#t-wpa3) |
 
 ### 📡 Mạng & Wireless
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| AP | /ˌeɪ ˈpiː/ | **Access Point** — thiết bị phát sóng Wi-Fi | — |
-| SSID | /ˌɛs ɛs aɪ ˈdiː/ | **Service Set Identifier** — tên mạng Wi-Fi | — |
-| BSSID | /ˌbiː ɛs ɛs aɪ ˈdiː/ | **Basic Service Set Identifier** — MAC address của AP | **MAC** = Media Access Control (địa chỉ vật lý 48-bit, VD: `E2:9E:5E:E6:1E:44`) |
-| MAC Address | /mæk əˈdrɛs/ | **Media Access Control** address — địa chỉ vật lý 48-bit, duy nhất mỗi thiết bị | **NIC** = Network Interface Card (card mạng) |
-| Channel | /ˈtʃænəl/ | Kênh tần số mà AP phát sóng (1–14 cho 2.4GHz) | **2.4GHz / 5GHz** = băng tần Wi-Fi; mỗi channel rộng 20–40MHz |
-| Monitor Mode | /ˈmɒnɪtər moʊd/ | Chế độ NIC bắt mọi packet trong không khí | **NIC** = Network Interface Card; **Managed Mode** = chế độ bình thường, chỉ nhận packet gửi cho mình |
-| Packet Injection | /ˈpækɪt ɪnˈdʒɛkʃən/ | Khả năng gửi packet tùy ý vào mạng wireless | **Chipset** phải hỗ trợ (Atheros, Ralink, Realtek RTL8812AU...) |
-| WLAN | /ˈdʌbəljuː læn/ | **Wireless Local Area Network** — mạng cục bộ không dây | **LAN** = Local Area Network (mạng có dây) |
-| IEEE 802.11 | /ˌaɪ trɪpl ˈiː/ | Bộ chuẩn cho mạng Wi-Fi | **IEEE** = Institute of Electrical and Electronics Engineers (tổ chức định chuẩn) |
-| Management Frames | /ˈmænɪdʒmənt freɪmz/ | Frame quản lý trong 802.11, không mã hóa → bị khai thác deauth | **PMF** = Protected Management Frames (WPA3 mã hóa frame này) |
-| Signal Strength | /ˈsɪɡnəl strɛŋθ/ | Cường độ tín hiệu (dBm) | **dBm** = decibel-milliwatt; -30 dBm = rất mạnh, -90 dBm = rất yếu |
+| <a id="t-ap">AP</a> | /ˌeɪ ˈpiː/ | **Access Point** — thiết bị phát sóng Wi-Fi | Có [BSSID](#t-bssid) (MAC) và [SSID](#t-ssid) (tên) |
+| <a id="t-ssid">SSID</a> | /ˌɛs ɛs aɪ ˈdiː/ | **Service Set Identifier** — tên mạng Wi-Fi | Dùng cùng [PSK](#t-psk) để tạo [PMK](#t-pmk) |
+| <a id="t-bssid">BSSID</a> | /ˌbiː ɛs ɛs aɪ ˈdiː/ | **Basic Service Set Identifier** — [MAC](#t-mac) address của [AP](#t-ap) | Định danh duy nhất mỗi mạng |
+| <a id="t-mac">MAC Address</a> | /mæk əˈdrɛs/ | **Media Access Control** — địa chỉ vật lý 48-bit, duy nhất mỗi thiết bị | **NIC** = Network Interface Card (card mạng) |
+| <a id="t-channel">Channel</a> | /ˈtʃænəl/ | Kênh tần số mà [AP](#t-ap) phát sóng (1–14 cho 2.4GHz) | **2.4GHz / 5GHz** = băng tần Wi-Fi; mỗi channel rộng 20–40MHz |
+| <a id="t-monitor-mode">Monitor Mode</a> | /ˈmɒnɪtər moʊd/ | Chế độ NIC bắt mọi packet trong không khí | **Managed Mode** = chế độ bình thường; bật bằng [airmon-ng](#t-aircrack-ng) |
+| <a id="t-packet-injection">Packet Injection</a> | /ˈpækɪt ɪnˈdʒɛkʃən/ | Gửi packet tùy ý vào mạng wireless | **Chipset** phải hỗ trợ (Atheros, Ralink, RTL8812AU...) |
+| <a id="t-wlan">WLAN</a> | /ˈdʌbəljuː læn/ | **Wireless Local Area Network** — mạng cục bộ không dây | **LAN** = Local Area Network (mạng có dây) |
+| <a id="t-ieee">IEEE 802.11</a> | /ˌaɪ trɪpl ˈiː/ | Bộ chuẩn cho mạng Wi-Fi | **IEEE** = Institute of Electrical and Electronics Engineers |
+| <a id="t-mgmt-frames">Management Frames</a> | /ˈmænɪdʒmənt freɪmz/ | Frame quản lý 802.11, không mã hóa → bị khai thác [Deauth](#t-deauth) | **PMF** = Protected Management Frames ([WPA3](#t-wpa3) mã hóa frame này) |
+| <a id="t-signal">Signal Strength</a> | /ˈsɪɡnəl strɛŋθ/ | Cường độ tín hiệu (dBm) | **dBm** = decibel-milliwatt; -30 = rất mạnh, -90 = rất yếu |
 
 ### ⚔️ Tấn công & Khai thác
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| Pentest | /ˈpɛntɛst/ | **Penetration Testing** — mô phỏng tấn công để tìm lỗ hổng | — |
-| Deauthentication Attack | /diːɔːˌθɛntɪˈkeɪʃən əˈtæk/ | Gửi frame giả đá client ra → bắt handshake khi reconnect | **Deauth frame** = frame hủy xác thực trong 802.11 (không mã hóa trong WPA2) |
-| Brute-force Attack | /bruːt fɔːrs əˈtæk/ | Thử mọi tổ hợp password có thể | — |
-| Dictionary Attack | /ˈdɪkʃəneri əˈtæk/ | Thử password từ danh sách (wordlist) | **Wordlist** = file text chứa password, VD: `rockyou.txt` (~14 triệu password phổ biến) |
-| MitM | /mæn ɪn ðə ˈmɪdl/ | **Man-in-the-Middle** — chặn và sửa traffic giữa 2 bên | **Proxy** = trung gian chuyển tiếp traffic |
-| Rogue AP | /roʊɡ ˌeɪ ˈpiː/ | **Rogue Access Point** — AP giả do attacker tạo | — |
-| Evil Twin | /ˈiːvəl twɪn/ | Tạo AP giả có cùng SSID với AP thật → MitM | **SSID** = tên mạng; client tự kết nối AP có signal mạnh hơn |
-| Packet Sniffing | /ˈpækɪt ˈsnɪfɪŋ/ | Bắt và phân tích traffic mạng | **Sniffer** = công cụ bắt packet (Wireshark, tcpdump) |
-| WPS Attack | /ˌdʌbəljuː piː ˈɛs/ | Brute-force WPS PIN (8 chữ số) | **WPS** = Wi-Fi Protected Setup; PIN 8 chữ số nhưng chỉ ~11000 khả năng (do chia 2 nửa kiểm tra) |
-| MAC Spoofing | /mæk ˈspuːfɪŋ/ | Giả mạo MAC để bypass filtering | **MAC filtering** = chỉ cho phép MAC đã đăng ký kết nối |
-| Eavesdropping | /ˈiːvzˌdrɒpɪŋ/ | Nghe lén — bắt traffic không được phép | — |
-| Credential Harvesting | /krɪˈdɛnʃəl ˈhɑːrvɪstɪŋ/ | Thu thập username/password | **Credential** = thông tin đăng nhập (username + password) |
-| DoS | /ˌdiː oʊ ˈɛs/ | **Denial of Service** — làm hệ thống không thể phục vụ | **DDoS** = Distributed DoS (tấn công từ nhiều nguồn cùng lúc) |
-| Vulnerability | /ˌvʌlnərəˈbɪləti/ | Lỗ hổng bảo mật — điểm yếu có thể bị khai thác | **CVE** = Common Vulnerabilities and Exposures (mã định danh lỗ hổng, VD: CVE-2017-13077 cho KRACK) |
-| Exploit | /ˈɛksplɔɪt/ | Code/kỹ thuật khai thác vulnerability | **Zero-day** = lỗ hổng chưa có bản vá; **Payload** = mã độc chạy sau khi exploit thành công |
+| <a id="t-pentest">Pentest</a> | /ˈpɛntɛst/ | **Penetration Testing** — mô phỏng tấn công để tìm [Vulnerability](#t-vulnerability) | — |
+| <a id="t-deauth">Deauthentication Attack</a> | /diːɔːˌθɛntɪˈkeɪʃən əˈtæk/ | Gửi frame giả đá client ra → bắt [Handshake](#t-4way-handshake) khi reconnect | Khai thác [Management Frames](#t-mgmt-frames) không mã hóa |
+| <a id="t-bruteforce">Brute-force Attack</a> | /bruːt fɔːrs əˈtæk/ | Thử mọi tổ hợp password có thể | — |
+| <a id="t-dictionary-attack">Dictionary Attack</a> | /ˈdɪkʃəneri əˈtæk/ | Thử password từ danh sách ([Wordlist](#t-wordlist)) | [Wordlist](#t-wordlist) VD: `rockyou.txt` (~14 triệu password) |
+| <a id="t-mitm">MitM</a> | /mæn ɪn ðə ˈmɪdl/ | **Man-in-the-Middle** — chặn và sửa traffic giữa 2 bên | **Proxy** = trung gian chuyển tiếp traffic |
+| <a id="t-rogue-ap">Rogue AP</a> | /roʊɡ ˌeɪ ˈpiː/ | **Rogue Access Point** — [AP](#t-ap) giả do attacker tạo | Xem [Evil Twin](#t-evil-twin) |
+| <a id="t-evil-twin">Evil Twin</a> | /ˈiːvəl twɪn/ | Tạo [AP](#t-ap) giả có cùng [SSID](#t-ssid) với AP thật → [MitM](#t-mitm) | Client tự kết nối AP có signal mạnh hơn |
+| <a id="t-sniffing">Packet Sniffing</a> | /ˈpækɪt ˈsnɪfɪŋ/ | Bắt và phân tích traffic mạng | **Sniffer** = [Wireshark](#t-wireshark), [tcpdump](#t-tcpdump) |
+| <a id="t-wps-attack">WPS Attack</a> | /ˌdʌbəljuː piː ˈɛs/ | [Brute-force](#t-bruteforce) [WPS](#t-wps) PIN (8 chữ số) | [Reaver](#t-reaver) / [Bully](#t-bully) dùng để tấn công WPS |
+| <a id="t-mac-spoofing">MAC Spoofing</a> | /mæk ˈspuːfɪŋ/ | Giả mạo [MAC](#t-mac) để bypass [MAC Filtering](#t-mac-filtering) | — |
+| <a id="t-eavesdropping">Eavesdropping</a> | /ˈiːvzˌdrɒpɪŋ/ | Nghe lén — bắt traffic không được phép | — |
+| <a id="t-credential">Credential Harvesting</a> | /krɪˈdɛnʃəl ˈhɑːrvɪstɪŋ/ | Thu thập username/password | **Credential** = thông tin đăng nhập |
+| <a id="t-dos">DoS</a> | /ˌdiː oʊ ˈɛs/ | **Denial of Service** — làm hệ thống không thể phục vụ | **DDoS** = Distributed DoS (từ nhiều nguồn cùng lúc) |
+| <a id="t-vulnerability">Vulnerability</a> | /ˌvʌlnərəˈbɪləti/ | Lỗ hổng bảo mật — điểm yếu bị khai thác | **CVE** = Common Vulnerabilities and Exposures (VD: CVE-2017-13077 cho [KRACK](#t-krack)) |
+| <a id="t-exploit">Exploit</a> | /ˈɛksplɔɪt/ | Code/kỹ thuật khai thác [Vulnerability](#t-vulnerability) | **Zero-day** = lỗ hổng chưa có bản vá; **Payload** = mã độc |
 
 ### 🛠️ Công cụ & Kỹ thuật
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| Aircrack-ng | /ˈɛrkræk ɛn dʒiː/ | Suite audit wireless: scan, capture, deauth, crack | **ng** = next generation (phiên bản mới); **Suite** = bộ nhiều tool |
-| Wifite | /ˈwaɪfaɪt/ | Automated wireless pentest, chạy trên nền Aircrack-ng | **Automated** = tự động hóa toàn bộ quy trình |
-| Wordlist | /ˈwɜːrdlɪst/ | File chứa danh sách password để crack | VD: `rockyou.txt`, `mkwifi.txt`; tạo bằng tool **crunch** |
-| Hashcat | /ˈhæʃkæt/ | Tool crack password, hỗ trợ GPU | **GPU** = Graphics Processing Unit (card đồ họa, nhanh hơn CPU); **CUDA** = NVIDIA GPU API; **OpenCL** = API GPU đa nền tảng |
-| Reaver | /ˈriːvər/ | Brute-force WPS PIN | **WPS PIN** = 8 chữ số, ~11000 khả năng thực tế |
-| Bully | /ˈbʊli/ | Brute-force WPS PIN (thay thế Reaver) | — |
-| Wireshark | /ˈwaɪərʃɑːrk/ | Phân tích packet mạng (GUI) | **GUI** = Graphical User Interface (giao diện đồ họa) |
-| tcpdump | /ˌtiː siː ˈdʌmp/ | Bắt packet mạng (CLI) | **CLI** = Command Line Interface (dòng lệnh) |
-| Kali Linux | /ˈkɑːli ˈlɪnʌks/ | Distro Linux chuyên pentest, 600+ tool | **Distro** = distribution (bản phân phối Linux); dựa trên **Debian** |
-| VM | /ˌviː ˈɛm/ | **Virtual Machine** — máy ảo, chạy OS trong OS | **Hypervisor** = phần mềm tạo/quản lý VM (VirtualBox, VMware) |
-| VirtualBox | /ˈvɜːrtʃuəlbɒks/ | Phần mềm ảo hóa miễn phí | **USB passthrough** = chuyển USB từ host vào VM (cần cho Wi-Fi adapter) |
+| <a id="t-aircrack-ng">Aircrack-ng</a> | /ˈɛrkræk ɛn dʒiː/ | [Suite](#t-suite) audit wireless: scan, capture, [Deauth](#t-deauth), crack | **ng** = next generation |
+| <a id="t-wifite">Wifite</a> | /ˈwaɪfaɪt/ | Automated wireless [Pentest](#t-pentest), chạy trên nền [Aircrack-ng](#t-aircrack-ng) | Gọi [Reaver](#t-reaver)/[Bully](#t-bully) cho [WPS](#t-wps) |
+| <a id="t-wordlist">Wordlist</a> | /ˈwɜːrdlɪst/ | File chứa danh sách password để crack | VD: `rockyou.txt`, `mkwifi.txt`; tạo bằng **crunch** |
+| <a id="t-hashcat">Hashcat</a> | /ˈhæʃkæt/ | Tool crack password, hỗ trợ GPU | **GPU** = card đồ họa; **CUDA** = NVIDIA API; **OpenCL** = API đa nền tảng |
+| <a id="t-reaver">Reaver</a> | /ˈriːvər/ | [Brute-force](#t-bruteforce) [WPS](#t-wps) PIN | Dùng bởi [Wifite](#t-wifite) |
+| <a id="t-bully">Bully</a> | /ˈbʊli/ | [Brute-force](#t-bruteforce) [WPS](#t-wps) PIN (thay thế [Reaver](#t-reaver)) | — |
+| <a id="t-wireshark">Wireshark</a> | /ˈwaɪərʃɑːrk/ | Phân tích packet mạng (GUI) | **GUI** = Graphical User Interface |
+| <a id="t-tcpdump">tcpdump</a> | /ˌtiː siː ˈdʌmp/ | Bắt packet mạng (CLI) | **CLI** = Command Line Interface |
+| <a id="t-kali">Kali Linux</a> | /ˈkɑːli ˈlɪnʌks/ | Distro Linux chuyên [Pentest](#t-pentest), 600+ tool | **Distro** = bản phân phối Linux; dựa trên **Debian** |
+| <a id="t-vm">VM</a> | /ˌviː ˈɛm/ | **Virtual Machine** — máy ảo, chạy OS trong OS | **Hypervisor** = phần mềm quản lý VM ([VirtualBox](#t-virtualbox), VMware) |
+| <a id="t-virtualbox">VirtualBox</a> | /ˈvɜːrtʃuəlbɒks/ | Phần mềm ảo hóa miễn phí | **USB passthrough** = chuyển USB từ host vào [VM](#t-vm) |
 
 ### 🛡️ Phòng thủ & Bảo mật
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| Ethical Hacking | /ˈɛθɪkəl ˈhækɪŋ/ | Tấn công hợp pháp để tìm lỗ hổng | **White hat** = hacker đạo đức; **Black hat** = hacker xấu; **Grey hat** = ở giữa |
-| Security Hardening | /sɪˈkjʊrəti ˈhɑːrdnɪŋ/ | Gia cố bảo mật, giảm attack surface | **Attack surface** = tổng các điểm có thể bị tấn công |
-| IDS | /ˌaɪ diː ˈɛs/ | **Intrusion Detection System** — phát hiện xâm nhập | **IPS** = Intrusion Prevention System (phát hiện + tự động chặn); VD: **Snort**, **Suricata** |
-| Firewall | /ˈfaɪərwɔːl/ | Tường lửa — lọc traffic theo quy tắc | **iptables/nftables** = firewall trên Linux; **Rules** = quy tắc cho phép/chặn |
-| MAC Filtering | /mæk ˈfɪltərɪŋ/ | Chỉ cho phép thiết bị có MAC đã đăng ký | Dễ bypass bằng **MAC spoofing** → không phải giải pháp chính |
-| Network Segmentation | /ˈnɛtwɜːrk ˌsɛɡmɛnˈteɪʃən/ | Tách mạng guest/internal để giảm phạm vi breach | **VLAN** = Virtual LAN (phân tách mạng logic); **Breach** = sự cố bảo mật |
-| Firmware Update | /ˈfɜːrmwɛr ʌpˈdeɪt/ | Cập nhật phần mềm router để vá lỗ hổng | **Firmware** = phần mềm nhúng trong phần cứng (router, AP) |
-| WPS | /ˌdʌbəljuː piː ˈɛs/ | **Wi-Fi Protected Setup** — kết nối nhanh bằng PIN | **PIN** = Personal Identification Number; nên **tắt** vì dễ brute-force |
-| fail2ban | /feɪl tuː bæn/ | Tự động ban IP sau nhiều lần login sai | **IP** = Internet Protocol address; **Ban** = chặn kết nối từ IP đó |
-| Access Control | /ˈækses kənˈtroʊl/ | Kiểm soát ai được truy cập gì | **802.1X** = chuẩn xác thực qua RADIUS server (dùng trong WPA2-Enterprise) |
+| <a id="t-ethical">Ethical Hacking</a> | /ˈɛθɪkəl ˈhækɪŋ/ | Tấn công hợp pháp để tìm [Vulnerability](#t-vulnerability) | **White hat** = đạo đức; **Black hat** = xấu; **Grey hat** = ở giữa |
+| <a id="t-hardening">Security Hardening</a> | /sɪˈkjʊrəti ˈhɑːrdnɪŋ/ | Gia cố bảo mật, giảm attack surface | **Attack surface** = tổng các điểm có thể bị tấn công |
+| <a id="t-ids">IDS</a> | /ˌaɪ diː ˈɛs/ | **Intrusion Detection System** — phát hiện xâm nhập | **IPS** = Prevention System (phát hiện + chặn); VD: Snort, Suricata |
+| <a id="t-firewall">Firewall</a> | /ˈfaɪərwɔːl/ | Tường lửa — lọc traffic theo quy tắc | **iptables/nftables** = firewall trên Linux |
+| <a id="t-mac-filtering">MAC Filtering</a> | /mæk ˈfɪltərɪŋ/ | Chỉ cho phép thiết bị có [MAC](#t-mac) đã đăng ký | Dễ bypass bằng [MAC Spoofing](#t-mac-spoofing) |
+| <a id="t-segmentation">Network Segmentation</a> | /ˈnɛtwɜːrk ˌsɛɡmɛnˈteɪʃən/ | Tách mạng guest/internal | **VLAN** = Virtual LAN; **Breach** = sự cố bảo mật |
+| <a id="t-firmware">Firmware Update</a> | /ˈfɜːrmwɛr ʌpˈdeɪt/ | Cập nhật phần mềm router để vá [Vulnerability](#t-vulnerability) | **Firmware** = phần mềm nhúng trong phần cứng |
+| <a id="t-wps">WPS</a> | /ˌdʌbəljuː piː ˈɛs/ | **Wi-Fi Protected Setup** — kết nối nhanh bằng PIN | Nên **tắt** vì dễ [Brute-force](#t-bruteforce); xem [WPS Attack](#t-wps-attack) |
+| <a id="t-fail2ban">fail2ban</a> | /feɪl tuː bæn/ | Tự động ban IP sau nhiều lần login sai | **IP** = Internet Protocol address |
+| <a id="t-access-control">Access Control</a> | /ˈækses kənˈtroʊl/ | Kiểm soát ai được truy cập gì | **802.1X** = xác thực qua RADIUS (dùng trong [WPA2](#t-wpa2)-Enterprise) |
 
 ### 📄 Thuật ngữ học thuật
 
 | Từ vựng | IPA | Nghĩa cần nắm | Khái niệm liên quan trong nghĩa |
 |---------|-----|----------------|------|
-| Suite | /swiːt/ | Bộ công cụ — nhiều tool đóng gói chung | VD: Aircrack-ng suite gồm airmon-ng, airodump-ng, aireplay-ng, aircrack-ng |
-| Utility | /juːˈtɪləti/ | Công cụ con trong 1 suite | VD: `airodump-ng` là 1 utility trong suite Aircrack-ng |
-| Deployment | /dɪˈplɔɪmənt/ | Triển khai — cài đặt và đưa vào sử dụng | — |
-| Reconnaissance | /rɪˈkɒnɪsəns/ | Thu thập thông tin — bước đầu trong pentest | **Recon** = viết tắt; gồm **passive** (không tương tác) và **active** (scan trực tiếp) |
-| Forensic Analysis | /fəˈrɛnzɪk əˈnæləsɪs/ | Phân tích pháp y số — điều tra sau sự cố | **Digital forensics** = thu thập và phân tích bằng chứng số |
-| Automation | /ˌɔːtəˈmeɪʃən/ | Tự động hóa các bước thủ công | VD: Wifite tự động hóa quy trình Aircrack-ng |
-| Methodology | /ˌmɛθəˈdɒlədʒi/ | Phương pháp luận — cách tiếp cận có hệ thống | — |
-| Countermeasure | /ˈkaʊntərˌmɛʒər/ | Biện pháp đối phó tấn công | VD: WPA3, strong password, disable WPS, IDS |
+| <a id="t-suite">Suite</a> | /swiːt/ | Bộ công cụ — nhiều tool đóng gói chung | VD: [Aircrack-ng](#t-aircrack-ng) suite |
+| <a id="t-utility">Utility</a> | /juːˈtɪləti/ | Công cụ con trong 1 [Suite](#t-suite) | VD: airodump-ng trong [Aircrack-ng](#t-aircrack-ng) |
+| <a id="t-deployment">Deployment</a> | /dɪˈplɔɪmənt/ | Triển khai — cài đặt và đưa vào sử dụng | — |
+| <a id="t-recon">Reconnaissance</a> | /rɪˈkɒnɪsəns/ | Thu thập thông tin — bước đầu trong [Pentest](#t-pentest) | **Passive** = không tương tác; **Active** = scan trực tiếp |
+| <a id="t-forensic">Forensic Analysis</a> | /fəˈrɛnzɪk əˈnæləsɪs/ | Phân tích pháp y số — điều tra sau sự cố | **Digital forensics** = thu thập bằng chứng số |
+| <a id="t-automation">Automation</a> | /ˌɔːtəˈmeɪʃən/ | Tự động hóa các bước thủ công | VD: [Wifite](#t-wifite) tự động hóa [Aircrack-ng](#t-aircrack-ng) |
+| <a id="t-methodology">Methodology</a> | /ˌmɛθəˈdɒlədʒi/ | Phương pháp luận — cách tiếp cận có hệ thống | — |
+| <a id="t-countermeasure">Countermeasure</a> | /ˈkaʊntərˌmɛʒər/ | Biện pháp đối phó tấn công | VD: [WPA3](#t-wpa3), strong password, disable [WPS](#t-wps), [IDS](#t-ids) |
 
 
